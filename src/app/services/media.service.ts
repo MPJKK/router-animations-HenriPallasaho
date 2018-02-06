@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Login} from '../models/login';
@@ -26,17 +26,24 @@ export class MediaService {
       console.log(response);
       localStorage.setItem('token', response.token);
       this.router.navigate(['front']);
-    }, (error: HttpErrorResponse ) => {
+    }, (error: HttpErrorResponse) => {
       // homma kusee -> loginiin
       console.log(error);
       this.router.navigate(['login']);
     });
   }
 
-  getUserData (token) {
+  getUserData(token) {
     const options = {
       headers: new HttpHeaders().set('x-access-token', token),
     };
     return this.http.get(this.apiUrl + '/users/user', options);
+  }
+
+  uploadMedia(token, fd) {
+    const options = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.post(this.apiUrl + '/media', fd, options);
   }
 }
