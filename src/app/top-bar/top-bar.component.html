@@ -1,18 +1,19 @@
+{{ mediaService.logged }}
 <nav>
   <ul>
-    <li *ngIf="mediaService.logged">
+    <li *ngIf="!mediaService.logged">
       <a [routerLink] = "'/register'">Register</a>
     </li>
-    <li>
+    <li *ngIf="!mediaService.logged">
       <a [routerLink] = "'/login'">Login</a>
     </li>
-    <li>
+    <li *ngIf="mediaService.logged">
       <a [routerLink] = "'/logout'">Logout</a>
     </li>
     <li>
       <a [routerLink] = "'/front'">Front page</a>
     </li>
-    <li>
+    <li *ngIf="mediaService.logged">
       <a [routerLink] = "'/upload'">Upload</a>
     </li>
   </ul>

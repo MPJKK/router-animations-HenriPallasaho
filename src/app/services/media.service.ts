@@ -8,6 +8,7 @@ export class MediaService {
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
+  logged = false;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -24,6 +25,7 @@ export class MediaService {
     this.http.post<Login>(this.apiUrl + '/login', user).subscribe(response => {
       // homma ok -> fronttiim
       console.log(response);
+      this.logged = true;
       localStorage.setItem('token', response.token);
       this.router.navigate(['front']);
     }, (error: HttpErrorResponse) => {
@@ -32,6 +34,7 @@ export class MediaService {
       this.router.navigate(['login']);
     });
   }
+
 
   getUserData(token) {
     const options = {
