@@ -18,7 +18,7 @@ export class MediaService {
   }
 
   getNew() {
-    return this.http.get(this.apiUrl + 'media?limit=10');
+    return this.http.get(this.apiUrl + '/media?limit=10');
   }
 
   newUser(user) {
