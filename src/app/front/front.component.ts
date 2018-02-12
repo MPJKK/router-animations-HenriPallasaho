@@ -25,12 +25,7 @@ export class FrontComponent implements OnInit {
           });
     }
 
-    /*this.mediaService.getNew().subscribe( data => {
-      console.log(data);
-      this.mediaArray = data;
-    })*/
-
-    this.mediaService.getAllMedia().subscribe(data => {
+    this.mediaService.getNew().subscribe(data => {
       console.log(data);
       this.mediaArray = data;
 
